@@ -21,13 +21,14 @@ public class SqlDepartmentDao implements DepartmentDao{
     public List<Department> getAll() {
         try (Connection conn = sql2o.open()){
             return conn.createQuery("SELECT * FROM departments")
+                    .throwOnMappingFailure(false)
                     .executeAndFetch(Department.class);
         }
     }
 
     @Override
     public void add(Department department) {
-        String sql = "INSERT INTO departments(name, description, employeeNo) VALUES (:name, :description, :employeeNo)";
+        String sql = "INSERT INTO departments(name, description, employeesNo) VALUES (:name, :description, :employeeNumber)";
         try(Connection conn = sql2o.open()) {
             int id = (int) conn.createQuery(sql, true)
                     .bind(department)

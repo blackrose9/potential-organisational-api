@@ -16,7 +16,7 @@ public class SqlUserDao implements UserDao{
 
     @Override
     public void add(User user) {
-        String sql = "INSERT INTO departments_users (name, position, role, departmentId), (:name, :position, :role, :departmentId)";
+        String sql = "INSERT INTO users (name, position, role, departmentId) VALUES (:name, :position, :role, :departmentId)";
         try (Connection conn = sql2o.open()){
             int id = (int) conn.createQuery(sql, true)
                     .bind(user)
@@ -30,7 +30,7 @@ public class SqlUserDao implements UserDao{
 
     @Override
     public void addUserToDepartment(User user, Department department) {
-        String sql = "INSERT INTO departments_users (departmentId, userId), (:departmentId, :userId)";
+        String sql = "INSERT INTO departments_users (departmentId, userId) VALUES (:departmentId, :userId)";
         try (Connection conn = sql2o.open()){
             conn.createQuery(sql)
                     .addParameter("departmentId", department.getId())

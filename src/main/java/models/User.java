@@ -5,14 +5,14 @@ import java.util.Objects;
 public class User {
     private String name;
     private String position;
-    private String roles;
+    private String role;
     private int id;
     private int departmentId;
 
     public User(String name, String position, String roles, int departmentId) {
         this.name = name;
         this.position = position;
-        this.roles = roles;
+        this.role = roles;
         this.departmentId = departmentId;
     }
 
@@ -25,12 +25,12 @@ public class User {
                 departmentId == user.departmentId &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(position, user.position) &&
-                Objects.equals(roles, user.roles);
+                Objects.equals(role, user.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, position, roles, id, departmentId);
+        return Objects.hash(name, position, role, id, departmentId);
     }
 
     public String getName() {
@@ -49,12 +49,12 @@ public class User {
         this.position = position;
     }
 
-    public String getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(String roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public int getId() {
