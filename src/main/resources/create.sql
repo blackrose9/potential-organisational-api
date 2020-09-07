@@ -1,0 +1,32 @@
+CREATE TABLE IF NOT EXISTS departments(
+id SERIAL PRIMARY KEY,
+name VARCHAR,
+description VARCHAR,
+employeesNo INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS users(
+id SERIAL PRIMARY KEY,
+departmentId INTEGER,
+name VARCHAR,
+position VARCHAR,
+role VARCHAR
+);
+
+CREATE TABLE IF NOT EXISTS news(
+id SERIAL PRIMARY KEY,
+departmentId INTEGER,
+description VARCHAR
+);
+
+CREATE TABLE IF NOT EXISTS departments_users(
+id SERIAL PRIMARY KEY,
+departmentId INTEGER,
+userId INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS departments_news(
+id SERIAL PRIMARY KEY,
+departmentId INTEGER,
+newsId INTEGER
+);
